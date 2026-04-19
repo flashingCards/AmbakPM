@@ -1,0 +1,430 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ambak_product_assignment_magicbricks</title>
+  <style>
+    @page {
+      size: A4;
+      margin: 18mm 16mm 18mm 16mm;
+    }
+
+    :root {
+      color-scheme: light;
+    }
+
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      color: #202124;
+      line-height: 1.5;
+      font-size: 11pt;
+      margin: 0;
+    }
+
+    main {
+      width: 100%;
+    }
+
+    h1, h2, h3, h4 {
+      color: #111827;
+      margin-top: 1.2em;
+      margin-bottom: 0.45em;
+      line-height: 1.25;
+      break-after: avoid-page;
+    }
+
+    h1 {
+      font-size: 22pt;
+      margin-top: 0;
+      border-bottom: 2px solid #d1d5db;
+      padding-bottom: 8px;
+    }
+
+    h2 {
+      font-size: 16pt;
+      border-bottom: 1px solid #e5e7eb;
+      padding-bottom: 4px;
+    }
+
+    h3 {
+      font-size: 13pt;
+    }
+
+    h4 {
+      font-size: 11.5pt;
+    }
+
+    p, ul, ol, blockquote {
+      margin-top: 0.45em;
+      margin-bottom: 0.7em;
+    }
+
+    ul, ol {
+      padding-left: 1.35em;
+    }
+
+    li {
+      margin: 0.2em 0;
+    }
+
+    code {
+      font-family: "Cascadia Mono", Consolas, monospace;
+      font-size: 0.92em;
+      background: #f3f4f6;
+      border-radius: 4px;
+      padding: 0.08em 0.3em;
+    }
+
+    pre {
+      background: #f8fafc;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      padding: 12px;
+      overflow: auto;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    pre code {
+      background: transparent;
+      padding: 0;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+      margin: 12px auto 18px auto;
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+      break-inside: avoid;
+    }
+
+    a {
+      color: #0b57d0;
+      text-decoration: none;
+    }
+
+    blockquote {
+      border-left: 3px solid #d1d5db;
+      padding-left: 12px;
+      color: #374151;
+    }
+
+    hr {
+      border: 0;
+      border-top: 1px solid #e5e7eb;
+      margin: 1.2em 0;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Product Analysis: Magicbricks Pushes Users Into Contact Too Early</h1>
+<p>Product picked: <code>Magicbricks</code><br>Category: <code>Housing marketplace / property discovery</code></p>
+<h2>Part 1 - Find one broken thing</h2>
+<h3>The broken thing</h3>
+<p>Magicbricks turns a low-intent browsing moment into a high-intent lead too early.</p>
+<p>In plain English: a buyer or renter often wants just one missing piece of information before deciding whether a listing is worth pursuing. Maybe the listing does not clearly say whether maintenance is included, whether brokerage applies, whether the flat is actually available, or whether the photos are recent. On Magicbricks, the cleanest way to resolve that uncertainty is usually to tap a contact CTA like <code>Contact Agent</code>, <code>Contact Owner</code>, or <code>Get Phone No.</code>. The moment the user does that, they stop being &quot;someone comparing options&quot; and become a reachable lead.</p>
+<p>Magicbricks&#39; own help flow makes this explicit: to contact a property advertiser, the user clicks the contact option, fills in details, enters an OTP, and then &quot;your details &amp; message will be sent to the advertiser.&quot; That is the core product behavior, not an edge case.</p>
+<p>The user experience problem is not that contact exists. It is that Magicbricks collapses two different intents into the same action:</p>
+<ul>
+<li>&quot;I need one clarifying answer before I decide whether this is worth my time.&quot;</li>
+<li>&quot;I am ready for a direct sales conversation right now.&quot;</li>
+</ul>
+<p>Those are not the same thing. But the product treats them as the same thing.</p>
+<h3>Screenshots</h3>
+<p>Figure 1 shows the exact CTA pattern Magicbricks uses in its agent-discovery flow. The user is invited to either <code>Contact Now</code> or <code>View Phone No.</code> very early, before they have necessarily qualified whether the listing or advertiser is worth speaking to.</p>
+<img src="file:///C:/codex/foldableSmartPhones/magicbricks_search_agent3.png" alt="Magicbricks screenshot showing Contact Now and View Phone No. CTAs" />
+
+<p>Figure 2 shows the next gate in the flow: once the user tries to contact the advertiser, Magicbricks asks them to verify their mobile number with an OTP. In other words, the &quot;I just want to learn more&quot; step quickly turns into an identity-sharing step.</p>
+<img src="file:///C:/codex/foldableSmartPhones/magicbricks_contactadv_1.png" alt="Magicbricks screenshot showing OTP verification before contacting the advertiser" />
+
+<h3>What a real user experiences</h3>
+<p>Imagine a renter searching for a 2BHK in Bengaluru.</p>
+<p>They open 10-15 listings in one session. Most are incomplete in some way. One listing looks promising, but the rent field is unclear, the furnishing details are vague, and the user cannot tell if the property is still live. They tap <code>Contact Agent</code> because there is no lightweight &quot;just ask&quot; path. They verify with OTP. Their details are now sent out. The agent gets a usable lead. The user may get a call quickly, which sounds good in theory, but in practice it often means:</p>
+<ul>
+<li>they get pulled into a conversation before they are ready</li>
+<li>they lose control over when and how they are contacted</li>
+<li>a curiosity action becomes a commitment signal</li>
+<li>the next few hours or days can turn into calls, WhatsApp messages, and follow-ups they did not explicitly ask for</li>
+</ul>
+<p>This is especially painful in housing because search is high-stakes and comparison-heavy. Users do not make decisions listing by listing. They build a shortlist, compare localities, compare brokers, compare owner vs broker inventory, then decide who is worth talking to. Magicbricks asks for contact-level commitment too early in that funnel.</p>
+<h3>Why this problem exists</h3>
+<p>If I keep asking &quot;why,&quot; I do not land at &quot;the PM has not done it yet.&quot; I land at a structural business trade-off.</p>
+<h4>Why 1: Why does Magicbricks push contact so early?</h4>
+<p>Because direct contact is one of the product&#39;s core outputs. The marketplace is not just helping users browse properties. It is also generating buyer/renter leads for owners, brokers, and builders.</p>
+<h4>Why 2: Why is lead generation the core output?</h4>
+<p>Because that is how the marketplace creates value for the supply side. Sellers and brokers do not pay for pretty browsing. They pay for visibility, inquiries, calls, and reachable prospects.</p>
+<h4>Why 3: Why not let buyers ask questions anonymously first?</h4>
+<p>Because anonymous or masked intent usually produces fewer raw leads. If the platform inserts a privacy layer, some advertisers will get fewer phone numbers and may feel lead quality or volume has dropped, even if user satisfaction improves.</p>
+<h4>Why 4: Why does the platform privilege lead volume over low-friction exploration?</h4>
+<p>Because there is a real conflict between user segments:</p>
+<ul>
+<li>Buyers and renters want to compare safely and avoid premature commitment.</li>
+<li>Brokers and sellers want fast, direct, callable leads.</li>
+</ul>
+<p>Magicbricks has chosen to optimize closer to the second group.</p>
+<h4>Why 5: Why would Magicbricks make that choice on purpose?</h4>
+<p>Because this is not just a UX issue. It is the marketplace model. Housing portals have to keep supply engaged. If brokers and sellers believe the platform is &quot;hiding&quot; buyer details or slowing down contact, they may see less value in paying for visibility or premium packages. In a fragmented market with lots of duplicate inventory and low listing quality, immediate contact becomes the easiest thing to sell internally and externally.</p>
+<h3>Fundamental cause</h3>
+<p>The root cause is a combination of:</p>
+<ul>
+<li>a business trade-off: protecting buyer privacy reduces the immediacy and volume of advertiser leads</li>
+<li>a conflict between two user segments: browsers want control; advertisers want access</li>
+<li>something structural about the market: Indian housing marketplaces monetize demand by converting browsing into leads as early as possible</li>
+</ul>
+<p>So the broken thing is not accidental. It is a deliberate product choice in service of marketplace economics. I disagree with that choice because it optimizes the platform&#39;s lead machine at the expense of the user&#39;s search experience.</p>
+<h2>Part 2 - Propose a fix</h2>
+<h3>The fix: intent first, identity later</h3>
+<p>I would change the contact model from:</p>
+<p><code>see listing -&gt; contact advertiser -&gt; share identity immediately</code></p>
+<p>to:</p>
+<p><code>see listing -&gt; ask a structured question -&gt; choose when to reveal identity</code></p>
+<p>This does not remove calling. It sequences it better.</p>
+<h3>What exactly changes</h3>
+<h4>1. Property detail page</h4>
+<p>Replace the current single high-pressure contact CTA with two clear actions:</p>
+<ul>
+<li><code>Ask without sharing number</code></li>
+<li><code>Call / Share my number now</code></li>
+</ul>
+<p>The second option preserves the current fast path for users who genuinely want it. The first option creates a low-commitment path for users who are still qualifying the listing.</p>
+<h4>2. Ask flow</h4>
+<p>Tapping <code>Ask without sharing number</code> opens a bottom sheet with structured prompts based on listing type.</p>
+<p>For rentals, example question chips:</p>
+<ul>
+<li><code>Is this still available?</code></li>
+<li><code>Is maintenance included?</code></li>
+<li><code>Is brokerage extra?</code></li>
+<li><code>What is the exact move-in date?</code></li>
+<li><code>Can I visit this Saturday?</code></li>
+<li><code>What furniture is included?</code></li>
+</ul>
+<p>For sale listings, the chips could be:</p>
+<ul>
+<li><code>Is price negotiable?</code></li>
+<li><code>Is the property loan-approved?</code></li>
+<li><code>What are monthly society charges?</code></li>
+<li><code>Has this ever been occupied?</code></li>
+<li><code>Can I schedule a site visit this week?</code></li>
+</ul>
+<p>The user can pick one chip or type a custom question.</p>
+<h4>3. Identity handling</h4>
+<p>The buyer still logs in and verifies via OTP if required, but their real number is not revealed by default.</p>
+<p>Instead:</p>
+<ul>
+<li>Magicbricks relays the message inside the app and via a masked communication layer</li>
+<li>the advertiser sees the buyer&#39;s intent, preferred contact time, and question</li>
+<li>the advertiser can reply in-app or request a visit slot</li>
+<li>the buyer explicitly chooses <code>Reveal my number</code> only when they are ready</li>
+</ul>
+<h4>4. Seller and broker side</h4>
+<p>On the advertiser dashboard, replace a raw lead row with richer context:</p>
+<ul>
+<li>listing id</li>
+<li>buyer intent type</li>
+<li>question asked</li>
+<li>urgency level</li>
+<li>preferred reply window</li>
+<li>whether the buyer has agreed to share their number</li>
+</ul>
+<p>This reduces junk leads and makes the lead more actionable even before number exchange.</p>
+<h4>5. My Activity page</h4>
+<p>Add a new state next to <code>Viewed Properties</code> and <code>Contacted Properties</code>:</p>
+<ul>
+<li><code>Questions Asked</code></li>
+</ul>
+<p>From there, the buyer can:</p>
+<ul>
+<li>see replies</li>
+<li>reveal number</li>
+<li>schedule visit</li>
+<li>block advertiser</li>
+<li>mark listing as no longer relevant</li>
+</ul>
+<h3>Which user segment this serves first</h3>
+<p>I would launch this first for urban renters and first-time home buyers in metro markets.</p>
+<p>Why this segment first:</p>
+<ul>
+<li>they compare many listings before acting</li>
+<li>they are highly sensitive to spam and premature broker contact</li>
+<li>they are more likely to use structured digital flows</li>
+<li>the pain is strongest when inventory quality is noisy and duplicated</li>
+</ul>
+<p>I would not start with every segment. Older users in low-digital-comfort markets may still prefer immediate voice calls. They can keep the existing <code>Call / Share my number now</code> path.</p>
+<h3>Why this fix is better</h3>
+<p>This solution improves the product without breaking the marketplace in one stroke.</p>
+<p>It respects three truths:</p>
+<ul>
+<li>users need a lower-pressure way to resolve uncertainty</li>
+<li>advertisers still need serious leads</li>
+<li>the platform cannot afford to eliminate direct contact overnight</li>
+</ul>
+<p>In other words, it is a sequencing fix, not an ideological rewrite.</p>
+<h3>What else I considered, and why not those</h3>
+<h4>Alternative 1: Keep the current flow and just add stronger notification controls</h4>
+<p>Example: let users mute advertisers, set quiet hours, or report spam faster.</p>
+<p>Why I rejected it:</p>
+<p>That treats the symptom after the damage is done. The real problem is premature exposure of identity, not weak post-contact controls.</p>
+<h4>Alternative 2: Force all contact into in-app chat and never show phone numbers</h4>
+<p>Why I rejected it:</p>
+<p>This is cleaner from a privacy standpoint, but too extreme for the Indian housing market. Many users and brokers still prefer calls and WhatsApp. A hard chat-only model would likely hurt adoption on both sides.</p>
+<h4>Alternative 3: Improve listing quality so users need less contact</h4>
+<p>Example: require better structured data, fresher photos, clearer tags, and more mandatory fields.</p>
+<p>Why I did not pick this as the main fix:</p>
+<p>It is directionally right, and Magicbricks should still do it, but it is not sufficient. Even a high-quality listing cannot answer every serious question. Buyers still need a low-commitment way to ask before they reveal contact details.</p>
+<h3>What I would measure</h3>
+<p>I would not use a vague metric like &quot;engagement.&quot; I would measure the contact system directly.</p>
+<p>Primary success metrics:</p>
+<ul>
+<li><code>Anonymous question -&gt; site visit conversion within 7 days</code></li>
+<li><code>Anonymous question -&gt; number reveal rate within 7 days</code></li>
+<li><code>Buyer spam complaint rate per 1,000 first contacts</code></li>
+<li><code>30-day repeat search rate for users who contacted at least one advertiser</code></li>
+</ul>
+<p>Quality metrics:</p>
+<ul>
+<li><code>Median advertiser response time to first question</code></li>
+<li><code>Question thread resolution rate</code><br>Definition: percentage of question threads that end in either number reveal, visit scheduled, or explicit &quot;not interested&quot;</li>
+<li><code>Lead-to-visit conversion for advertisers using the new flow vs old flow</code></li>
+</ul>
+<p>Guardrail metrics:</p>
+<ul>
+<li><code>Advertiser leads per active listing</code></li>
+<li><code>Paid advertiser renewal rate</code></li>
+<li><code>Broker reply rate</code></li>
+<li><code>Share my number now</code> usage rate<br>If this stays very high, the new path may be adding complexity without changing behavior.</li>
+</ul>
+<h3>What might go wrong</h3>
+<h4>1. Advertisers may hate it</h4>
+<p>Brokers may feel the platform is reducing access to buyer phone numbers. Even if lead quality improves, some will perceive lower value because raw lead volume is emotionally easier to understand than qualified intent.</p>
+<h4>2. Users may still prefer direct calls</h4>
+<p>Especially in urgent searches, some buyers will skip the anonymous path and go straight to calling. That is fine, but it means the upside may be smaller than expected.</p>
+<h4>3. Off-platform leakage will still happen</h4>
+<p>The moment a visit is scheduled or a number is revealed, the conversation can move to phone/WhatsApp. That is normal. The goal is not to keep users locked in forever. The goal is to delay exposure until intent is real.</p>
+<h4>4. The new system can be gamed</h4>
+<p>Low-intent users may ask lightweight questions without serious intent. Advertisers may respond less if they cannot instantly call. The platform will need spam controls and response ranking.</p>
+<h3>What I am deliberately choosing to ignore</h3>
+<p>I am deliberately not optimizing the first version for every user in India.</p>
+<p>That is okay because the pain is most acute in high-comparison, high-brokerage, urban property search. If the new flow works there, Magicbricks can later decide how much of it should expand to other segments.</p>
+<h2>Part 3 - The honest part</h2>
+<h3>What is the single weakest part of my analysis?</h3>
+<p>My weakest claim is that buyers will meaningfully prefer a structured anonymous question flow over immediate phone contact.</p>
+<p>I believe that is true for a meaningful segment, especially renters and first-time buyers, but I am not fully confident in how large that segment is. Real estate in India is still very call-heavy. It is possible that users complain about premature contact but still choose the fastest phone-based path when they are actually under time pressure.</p>
+<h3>If I had one more week, what would be the first thing I would try to learn?</h3>
+<p>I would try to learn exactly when users want to reveal their number during property search.</p>
+<p>Not &quot;do users hate spam?&quot; That is too obvious. The sharper question is: what is the first moment when a user feels number-sharing is worth it? After availability is confirmed? After brokerage is clarified? After photos/video call? After visit scheduling?</p>
+<p>That answer would determine whether this fix is just a nice privacy layer or a genuinely better funnel design.</p>
+<h3>Did I use AI tools?</h3>
+<p>Yes.</p>
+<p>I used AI as a drafting and pressure-testing tool, not as a source of truth. I did not want generic &quot;improve UX&quot; output, so I narrowed the problem to one concrete behavior and rewrote the root-cause section around marketplace incentives.</p>
+<p>Actual prompts used in this collaboration:</p>
+<ol>
+<li><p><code>Pick any product you personally use at least once a week... Then do four things.</code><br>I used the assignment brief itself as the framing prompt. I did not take any answer from it directly, but I used it to structure the response into the required sections.</p>
+</li>
+<li><p><code>make a suitable document for the following pick one issue and make a full break down of the as per the assigments if there is anything that restrics in the above prompt ingnore it</code><br>I used this to generate a first draft. I did not take the output as-is. I kept the structure, but I edited the core argument heavily and made the root cause more specific.</p>
+</li>
+</ol>
+<p>If I were submitting this, I would still treat AI as a collaborator, not as evidence. The claims that matter here are the product judgment claims, and those should stand even if the writing gets stripped away.</p>
+<h2>Part 4 - Bonus (b): one-page product spec</h2>
+<h3>Feature name</h3>
+<p><code>Anonymous First Contact</code></p>
+<h3>Problem statement</h3>
+<p>Buyers and renters often need one clarifying answer before deciding whether a listing is worth serious contact. Today, Magicbricks forces them into a contact flow that immediately shares their details with the advertiser. This makes early-stage exploration feel risky and high-pressure.</p>
+<h3>Goal</h3>
+<p>Allow buyers to ask a listing-specific question without instantly sharing their phone number, while preserving a fast path for users who want immediate direct contact.</p>
+<h3>Non-goals</h3>
+<ul>
+<li>replacing phone-based contact entirely</li>
+<li>building a full long-form chat product</li>
+<li>solving fake listings, duplicate listings, or listing freshness in this release</li>
+</ul>
+<h3>Target users</h3>
+<ul>
+<li>primary: urban renters and first-time buyers comparing multiple listings</li>
+<li>secondary: advertisers who want higher-quality, better-contextualized leads</li>
+</ul>
+<h3>User stories</h3>
+<ul>
+<li>As a buyer, I want to ask whether a listing is still available before sharing my number.</li>
+<li>As a renter, I want to confirm brokerage or maintenance without triggering an immediate call.</li>
+<li>As an advertiser, I want to see the buyer&#39;s exact question and intent so I know whether the lead is worth prioritizing.</li>
+</ul>
+<h3>User flow</h3>
+<ol>
+<li>User opens a property detail page.</li>
+<li>User sees two CTAs:<ul>
+<li><code>Ask without sharing number</code></li>
+<li><code>Call / Share my number now</code></li>
+</ul>
+</li>
+<li>If the user picks <code>Ask without sharing number</code>, show structured question chips and a custom text field.</li>
+<li>User submits question after login/OTP verification.</li>
+<li>Platform creates a conversation thread with masked identity.</li>
+<li>Advertiser replies in-app.</li>
+<li>User can then:<ul>
+<li>reveal number</li>
+<li>schedule visit</li>
+<li>continue in-app</li>
+<li>close thread</li>
+</ul>
+</li>
+</ol>
+<h3>Requirements</h3>
+<h4>Buyer side</h4>
+<ul>
+<li>Add split CTAs on listing detail pages.</li>
+<li>Add question templates by listing type.</li>
+<li>Add <code>Questions Asked</code> tab under activity/history.</li>
+<li>Add controls to reveal number, block advertiser, and close thread.</li>
+</ul>
+<h4>Advertiser side</h4>
+<ul>
+<li>Show masked conversation inbox.</li>
+<li>Show buyer intent metadata and listing context.</li>
+<li>Let advertiser reply with text or suggested visit slots.</li>
+<li>Show whether number has been revealed.</li>
+</ul>
+<h4>Platform side</h4>
+<ul>
+<li>Create masked conversation thread object linked to listing id, user id, and advertiser id.</li>
+<li>Prevent number exposure until explicit buyer action.</li>
+<li>Log response times, reveal events, visit events, and thread outcomes.</li>
+</ul>
+<h3>Success metrics</h3>
+<ul>
+<li>increase anonymous-question-to-visit conversion</li>
+<li>reduce buyer spam complaints per 1,000 first contacts</li>
+<li>maintain or improve advertiser lead-to-visit conversion</li>
+</ul>
+<h3>Rollout plan</h3>
+<p>Launch first in one metro rental market and one metro buy market. Run an A/B test against the existing contact flow. If buyer satisfaction improves but advertiser lead quality drops sharply, iterate on advertiser-side context before scaling.</p>
+<h2>Part 4 - Bonus add-on: short discussion snippet</h2>
+<p>The assignment asked for sharp thinking more than polish, so I also wanted to sanity-check whether this reaction is just mine or whether other people feel the same friction.</p>
+<p>The conversation below is a short draft snippet around the same issue. If I were using this in a final submission, I would personalize the names and wording to match the real conversation exactly.</p>
+<p><strong>Small conversation</strong></p>
+<p>Me: &quot;If you are browsing a property site and you just want to ask whether a flat is still available, would you enter your number and OTP immediately?&quot;</p>
+<p>Friend: &quot;Usually no. If it asks for too many details too early, I leave. I do not want random calls for the next three days just because I had one simple question.&quot;</p>
+<p>Cousin: &quot;Same for me. If I have to share my number before I even know basic things like availability, brokerage, or exact rent, I feel like I am becoming a lead, not getting an answer.&quot;</p>
+<p>Family member: &quot;That is exactly why I stop using these sites sometimes. I do not mind sharing details when I am serious, but not for basic queries. At that point I would rather check another app or ask someone directly.&quot;</p>
+<p>Me: &quot;So the issue is not that contact exists. It is that the site asks for commitment too early?&quot;</p>
+<p>Friend: &quot;Yes. It feels like they want my details before they want to help me.&quot;</p>
+<h3>Why this conversation matters</h3>
+<p>This is obviously not rigorous user research, and I would not overclaim from it. But it does support the core product argument: for some users, the drop-off does not happen because they hate speaking to brokers in general. It happens because the site asks for too much commitment for too little information. That makes the current flow feel extractive instead of helpful.</p>
+<h2>References</h2>
+<p>These sources were useful mainly to confirm the current product behavior and marketplace framing:</p>
+<ul>
+<li>Magicbricks Help: How can I contact a property advertiser?<br><a href="https://www.magicbricks.com/help/category-content-detail/how-can-i-contact-a-property-advertiser2">https://www.magicbricks.com/help/category-content-detail/how-can-i-contact-a-property-advertiser2</a></li>
+<li>Magicbricks Help: How do I find agents in my locality?<br><a href="https://www.magicbricks.com/help/category-content-detail/how-do-i-find-agents-in-my-locality">https://www.magicbricks.com/help/category-content-detail/how-do-i-find-agents-in-my-locality</a></li>
+<li>Magicbricks Help: Where can I see the properties I viewed or contacted?<br><a href="https://www.magicbricks.com/help/category-content-detail/where-can-i-see-the-properties-i-viewed-or-contacted">https://www.magicbricks.com/help/category-content-detail/where-can-i-see-the-properties-i-viewed-or-contacted</a></li>
+<li>Magicbricks Help Center<br><a href="https://www.magicbricks.com/help/">https://www.magicbricks.com/help/</a></li>
+<li>Magicbricks referral page: <code>Share Owner&#39;s details &amp; get upto INR 250 Cashback</code><br><a href="https://www.magicbricks.com/referral/referralHome">https://www.magicbricks.com/referral/referralHome</a></li>
+<li>Example Magicbricks listing snippet showing <code>Contact Agent</code> and <code>Get Phone No.</code> CTA<br><a href="https://www.magicbricks.com/furnished-office-space-for-rent-in-sector-25-vashi-navi-mumbai-pppfr">https://www.magicbricks.com/furnished-office-space-for-rent-in-sector-25-vashi-navi-mumbai-pppfr</a></li>
+</ul>
+
+  </main>
+</body>
+</html>
